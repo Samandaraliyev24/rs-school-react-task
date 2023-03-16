@@ -1,0 +1,21 @@
+/* BEM methodology */
+header {
+    padding: 10px 20px;
+    background-color: rgb(192, 197, 201);
+
+}
+.header-menu__list {
+    list-style-type: none;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+}
+
+.header-menu__list-item {
+    margin: 0 10px;
+}
+
+.header-menu__list-item > a {
+    text-decoration: none;
+}
