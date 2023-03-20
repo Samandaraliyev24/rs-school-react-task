@@ -1,0 +1,27 @@
+.card {
+    width: 250px;
+    height: 375px;
+    display: flex;
+    flex-direction: column;
+    border: 1px solid black;
+    margin-bottom: 15px;
+    margin-left: 100px;
+}
+
+.card_img-container {
+    width: 100%;
+    height: 50%;
+}
+
+.card_img{
+    width: 100%;
+    height:100%;
+}
+
+.card_info-container{
+    width: 100%;
+    height: 50%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}

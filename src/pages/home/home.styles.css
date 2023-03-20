@@ -2,6 +2,11 @@
     display: flex;
     flex-direction: column;
     align-items: center;
-    justify-content: center;
-    height: 100vh;
+    /* justify-content: center; */
+    /* height: 100vh; */
+}
+.cards-list{
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
 }
