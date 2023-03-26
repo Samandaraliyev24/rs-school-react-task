@@ -13,6 +13,10 @@ export const router = createBrowserRouter([
     element: <Pages.About />,
   },
   {
+    path: '/form',
+    element: <Pages.Form />,
+  },
+  {
     path: '/*',
     element: <Pages.NotFound />,
   },

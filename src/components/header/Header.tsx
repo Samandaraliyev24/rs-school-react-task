@@ -10,6 +10,9 @@ const Header = () => {
             <a href="/">Home</a>
           </li>
           <li className="header-menu__list-item">
+            <a href="/form">Form</a>
+          </li>
+          <li className="header-menu__list-item">
             <a href="/about">About</a>
           </li>
         </ul>
