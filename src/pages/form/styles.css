@@ -30,13 +30,13 @@ main {
   padding: var(--element-padding) 0;
   margin: var(--element-padding) 0;
 }
+
 .form-com__element--row {
   display: flex;
   flex-direction: row;
   align-items: center;
-  width: 90%;
-  padding: var(--element-padding) 0;
-  margin: var(--element-padding) 0;
+  width: 100%;
+  background-color: red;
 }
 
 .form-com__element-label {

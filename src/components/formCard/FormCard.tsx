@@ -1,24 +1,25 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
 import React from 'react';
 import './styles.css';
 
 type Props = {
-  id: string;
+  lastname: string;
   name: string;
-  lastName: string;
   birthday: string;
   country: string;
-  dataUseAgreement: boolean;
+  profilePicture: any;
+  gender: any;
   handleDelete: (id: string) => void;
 };
 const FormCard = (props: Props) => {
-  const { id, name, lastName, birthday, country, dataUseAgreement } = props;
+  const { name, lastname, birthday, country, gender, profilePicture } = props;
   return (
     <div className="form-item-com">
       <p className="form-item-com__row">
         Name: <span>{name}</span>
       </p>
       <p className="form-item-com__row">
-        Lastname: <span>{lastName}</span>
+        Lastname: <span>{lastname}</span>
       </p>
       <p className="form-item-com__row">
         Birthday: <span>{birthday}</span>
@@ -27,10 +28,13 @@ const FormCard = (props: Props) => {
         Country: <span>{country}</span>
       </p>
       <p className="form-item-com__row">
-        Data Agreement:
-        <span>{dataUseAgreement ? 'Agreed' : "Didn't agree"}</span>
+        Profile Picture: <span>{profilePicture[0]?.name || 'Not exists'}</span>
       </p>
-      <button onClick={() => props.handleDelete(id)} className="form-item__remove-btn">
+      <p className="form-item-com__row">
+        Gender:
+        <span>{gender ? 'Male' : 'Female'}</span>
+      </p>
+      <button onClick={() => props.handleDelete(name)} className="form-item__remove-btn">
         X
       </button>
     </div>

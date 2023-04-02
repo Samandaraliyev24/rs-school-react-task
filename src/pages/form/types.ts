@@ -1,8 +1,9 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
 export interface IForm {
-  id: string;
+  lastname: string;
   name: string;
-  lastName: string;
   birthday: string;
   country: string;
-  dataUseAgreement: boolean;
+  profilePicture: any;
+  gender: any;
 }
