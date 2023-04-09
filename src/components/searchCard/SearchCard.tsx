@@ -4,9 +4,10 @@ import './search.styles.css';
 interface SearchProp {
   val: string;
   setVal: (val: string) => void;
+  handleSubmit: (e: React.FormEvent<HTMLFormElement>) => void;
 }
 
-const SearchCard = ({ val, setVal }: SearchProp) => {
+const SearchCard = ({ val, setVal, handleSubmit }: SearchProp) => {
   useEffect(() => {
     return () => {
       window.localStorage.setItem('inputVal', val);
@@ -15,7 +16,7 @@ const SearchCard = ({ val, setVal }: SearchProp) => {
 
   return (
     <div className="search">
-      <form className="search__form">
+      <form className="search__form" onSubmit={(e) => handleSubmit(e)}>
         <img src={require('../../assets/searchIcon.webp')} className="search__form-icon" />
         <input
           className="search__form-input"
@@ -27,4 +28,4 @@ const SearchCard = ({ val, setVal }: SearchProp) => {
   );
 };
 
-export default SearchCard;
+export default React.memo(SearchCard);

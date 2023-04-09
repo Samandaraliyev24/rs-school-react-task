@@ -42,7 +42,7 @@ const Form = () => {
     <main className="form-main">
       <form onSubmit={handleSubmit(onSubmit)} className="form-com">
         <div className="form-com__element">
-          <label className="form-com__element-label" htmlFor="lastname">
+          <label className="form-com__elqement-label" htmlFor="lastname">
             Lastname
           </label>
           <input
