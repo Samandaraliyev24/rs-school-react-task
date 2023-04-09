@@ -10,3 +10,23 @@
     flex-direction: row;
     flex-wrap: wrap;
 }
+.dialog {
+  
+  
+  
+  width: 30rem;
+  height: 30rem;
+  z-index: 999999;
+  border: 0.5px solid black;
+
+  border-radius: 20px;
+}
+
+.dialog_button {
+    /* position: absolute; */
+    margin-left: 460px;
+    width: 30px;
+    height: 30px;
+
+    border-radius: 10px;
+}
