@@ -1,6 +1,8 @@
 import React, { useState } from 'react';
 import { SearchCard, Card } from '../../components';
 import './home.styles.css';
+import { useReduxSelector, useReduxDispatch } from '../../store/store';
+import { setQuery, setResults } from '../../store/slices/search/reducer';
 
 type Icard = {
   _id: number;
@@ -11,12 +13,16 @@ type Icard = {
 };
 
 const Home = () => {
-  const [val, setVal] = useState(window.localStorage.getItem('inputVal') || '');
+  const dispatch = useReduxDispatch();
 
-  const [cards, setCards] = useState([]);
   const [isFetching, setIsFetching] = useState(false);
   const [isDialogOpen, setIsDialogOpen] = useState(false);
   const [currentCard, setCurrentCard] = useState<Icard>();
+
+  const { searchQuery, searchResults } = useReduxSelector((state) => ({
+    searchQuery: state.search.query,
+    searchResults: state.search.results,
+  }));
 
   async function fetchCharacters() {
     setIsFetching(true);
@@ -44,7 +50,11 @@ const Home = () => {
     e.preventDefault();
     fetchCharacters()
       .then((data) => {
-        setCards(data.docs);
+        dispatch(
+          setResults({
+            results: data.docs,
+          })
+        );
         return;
       })
       .catch((err) => console.error(err));
@@ -59,12 +69,24 @@ const Home = () => {
 
   return (
     <div className="root">
-      <SearchCard val={val} setVal={setVal} handleSubmit={handleSubmit} />
+      <SearchCard
+        val={searchQuery}
+        setVal={(e) =>
+          dispatch(
+            setQuery({
+              query: e,
+            })
+          )
+        }
+        handleSubmit={handleSubmit}
+      />
       <h1>Cards</h1>
       <ul className="cards-list">
-        {cards &&
-          cards.length > 0 &&
-          cards.map((card: Icard) => <Card card={card} key={card._id} openModal={openModal} />)}
+        {searchResults &&
+          searchResults.length > 0 &&
+          searchResults.map((card: Icard) => (
+            <Card card={card} key={card._id} openModal={openModal} />
+          ))}
       </ul>
       {isDialogOpen && (
         <dialog className="dialog" open={isDialogOpen}>

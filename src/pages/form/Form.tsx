@@ -4,8 +4,14 @@ import { useForm } from 'react-hook-form';
 import { FormCard } from '../../components';
 import { IForm } from './types';
 import './styles.css';
+import { useReduxDispatch, useReduxSelector } from 'store/store';
+import { setSubmissions } from '../../store/slices/search/reducer';
 
 const Form = () => {
+  const dispatch = useReduxDispatch();
+  const { submissions } = useReduxSelector((state) => ({
+    submissions: state.search.submissions,
+  }));
   const [forms, setForms] = useState<IForm[]>([]);
 
   const {
@@ -18,6 +24,17 @@ const Form = () => {
     const { lastname, name, birthday, country } = data;
     if (lastname && name && birthday && country) {
       setForms((prev) => [...prev, data]);
+      dispatch(
+        setSubmissions({
+          submission: {
+            lastname,
+            name,
+            birthday,
+            country,
+            profilePicture: '',
+          },
+        })
+      );
       reset({
         lastname: '',
         name: '',
@@ -100,7 +117,7 @@ const Form = () => {
         {errors.exampleRequired && <span>This field is required</span>}
       </form>
       <section className="form-items-con" id="form-items-con">
-        {forms.map((form: IForm) => (
+        {submissions.map((form: IForm) => (
           <FormCard key={form.name} {...form} handleDelete={handleDelete} />
         ))}
       </section>
