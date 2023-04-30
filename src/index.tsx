@@ -1,18 +1,11 @@
 import React from 'react';
-import ReactDOM from 'react-dom/client';
-import { RouterProvider } from 'react-router-dom';
-import { Provider } from 'react-redux';
-import { router } from './App';
-import { Header } from './components';
-import { store } from './store/store';
+import ReactDOM from 'react-dom';
 
-const root = ReactDOM.createRoot(document.getElementById('root') as HTMLElement);
+import { App } from './App';
 
-root.render(
-  <Provider store={store}>
-    <React.StrictMode>
-      <Header />
-      <RouterProvider router={router} />
-    </React.StrictMode>
-  </Provider>
+ReactDOM.hydrate(
+  <React.StrictMode>
+    <App />
+  </React.StrictMode>,
+  document.getElementById('root')
 );
